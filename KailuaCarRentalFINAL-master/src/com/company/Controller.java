@@ -27,12 +27,12 @@ public class Controller {
         while (scan.hasNextInt()) {
             int choice = scan.nextInt();
             switch (choice) {
-                case 1: rentalClass.printtRentalContracts(); rentalContracts(); break;
-                case 2: rentalClass.addRentalContract(); rentalContracts();break;
-                case 3: rentalClass.updateRentalContract(); rentalContracts(); break;
-                case 4: rentalClass.deleteRentalContract(); break;
-                case 5: rentalClass.customerDetails(); rentalContracts(); break;
-                case 6: rentalClass.carDetails(); rentalContracts(); break;
+                case 1: rentalClass.printtRentalContracts(); ui.rentalDeals(); break;
+                case 2: rentalClass.addRentalContract(); ui.rentalDeals(); break;
+                case 3: rentalClass.updateRentalContract(); ui.rentalDeals();break;
+                case 4: rentalClass.deleteRentalContract(); ui.rentalDeals(); break;
+                case 5: rentalClass.customerDetails(); ui.rentalDeals(); break;
+                case 6: rentalClass.carDetails();ui.rentalDeals();  break;
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again"); } } }
@@ -44,10 +44,10 @@ public class Controller {
         while (scan.hasNextInt()) {
             int choice = scan.nextInt();
             switch (choice) {
-                case 1: customerClass.selectCustomers(); customer(); break;
-                case 2: customerClass.addCustomer(); customer(); break;
-                case 3: customerClass.updateCustomer(); customer(); break;
-                case 4: customerClass.deleteCustomer(); customer(); break;
+                case 1: customerClass.selectCustomers(); ui.customers(); break;
+                case 2: customerClass.addCustomer(); ui.customers();break;
+                case 3: customerClass.updateCustomer(); ui.customers();break;
+                case 4: customerClass.deleteCustomer(); ui.customers();break;
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again");
@@ -60,10 +60,10 @@ public class Controller {
         while (scan.hasNextInt()) {
             int choice = scan.nextInt();
             switch (choice) {
-                case 1: carClass.printCars(); cars(); break;
-                case 2: carClass.addCar(); cars(); break;
-                case 3: carClass.updateCar(); cars(); break;
-                case 4: carClass.deleteCar(); cars(); break;
+                case 1: carClass.printCars();  ui.cars(); break;
+                case 2: carClass.addCar(); ui.cars(); break;
+                case 3: carClass.updateCar(); ui.cars();break;
+                case 4: carClass.deleteCar(); ui.cars(); break;
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again");
@@ -73,4 +73,3 @@ public class Controller {
     }
 
 
-}

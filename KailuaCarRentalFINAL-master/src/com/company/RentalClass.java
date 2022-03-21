@@ -226,5 +226,22 @@ public class RentalClass {
        return rentalContractID1;
    }
 
+   public void searchRentalContract()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+       String s =("Category\n1. Rental Contract ID\n2. Customer ID\n3. Car ID");
+       while (scan.hasNext()) {
+       int choice = scan.nextInt();
+       switch (choice) {
+           case 1: searchByID();
+               System.out.println(s); break;
+           case 2: searchByCustomerID(); searchRentalContract(); break;
+           case 3: searchByCarID(); searchRentalContract(); break;
+           case 9: Controller controller = new Controller(); controller.rentalContracts(); break;
+           default: System.out.println("invalid input");
+       }} }
+
+    public void searchByID(){}
+    public void searchByCustomerID(){}
+    public void searchByCarID(){}
 
 }
