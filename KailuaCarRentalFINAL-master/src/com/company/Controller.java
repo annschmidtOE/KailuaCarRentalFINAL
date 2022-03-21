@@ -33,7 +33,6 @@ public class Controller {
                 case 4: rentalClass.deleteRentalContract(); break;
                 case 5: rentalClass.customerDetails(); rentalContracts(); break;
                 case 6: rentalClass.carDetails(); rentalContracts(); break;
-                case 7: rentalClass.printDates(); rentalContracts(); break;
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again"); } } }
@@ -71,8 +70,6 @@ public class Controller {
             } } }
 
 
-    public void rentalContractDetails()throws SQLException{
-        System.out.println("");
     }
 
 
