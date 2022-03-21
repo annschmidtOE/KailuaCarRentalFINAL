@@ -117,6 +117,9 @@ public class CustomerClass {
     }
 
 
+    public void searchCustomer(){
+
+    }
 
 
 }

@@ -36,4 +36,8 @@ public class UI {
         printString("enter the ID of the rental contract you wish to see the details of");
     }
 
+    public void searchRental(){
+        printString(("Category\n1. Rental Contract ID\n2. Customer ID\n3. Car ID"));
+    }
+
 }

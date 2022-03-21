@@ -33,6 +33,7 @@ public class Controller {
                 case 4: rentalClass.deleteRentalContract(); ui.rentalDeals(); break;
                 case 5: rentalClass.customerDetails(); ui.rentalDeals(); break;
                 case 6: rentalClass.carDetails();ui.rentalDeals();  break;
+                case 7: rentalClass.searchRentalContract(); ui.rentalDeals(); break;
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again"); } } }

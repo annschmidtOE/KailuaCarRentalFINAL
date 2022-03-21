@@ -8,6 +8,7 @@ public class RentalClass {
     private final String USER = "kailua@kailuacarrental";
     private final String PASSWORD = "Gruppe4#";
     private final String DATABASE_URL = "jdbc:mysql://kailuacarrental.mysql.database.azure.com:3306/kailua_car_rental";
+    private final UI ui = new UI();
 
     public void updateRentalContract() throws SQLException {
         String attributeToUpdate = attributeToUpdate();
@@ -228,19 +229,39 @@ public class RentalClass {
 
    public void searchRentalContract()throws SQLException{
         Scanner scan = new Scanner(System.in);
-       String s =("Category\n1. Rental Contract ID\n2. Customer ID\n3. Car ID");
+        ui.searchRental();
        while (scan.hasNext()) {
        int choice = scan.nextInt();
        switch (choice) {
-           case 1: searchByID();
-               System.out.println(s); break;
-           case 2: searchByCustomerID(); searchRentalContract(); break;
-           case 3: searchByCarID(); searchRentalContract(); break;
+           case 1: searchByID(); ui.searchRental(); break;
+           case 2: searchByCustomerID(); ui.searchRental(); break;
+           case 3: searchByCarID(); ui.searchRental(); break;
            case 9: Controller controller = new Controller(); controller.rentalContracts(); break;
            default: System.out.println("invalid input");
        }} }
 
-    public void searchByID(){}
+    public void searchByID()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter rental contract ID:");
+        int rentalID = scan.nextInt();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM rental_contract WHERE rental_contract_id="+rentalID+";");
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String rentalContractID = resultSet.getString("rental_contract_id");
+            String customerID = resultSet.getString("customer_customer_id");
+            String carID = resultSet.getString("cars_car_id");
+            String fromDate = resultSet.getString("from_date");
+            String toDate = resultSet.getString("to_date");
+            String kmDrivenReturned = resultSet.getString("km_driven_returned");
+            System.out.println("rental_contract_id=" + rentalContractID + " customer_id=" + customerID + " carID=" + carID + " from_date=" + fromDate + " to_date="
+                    + toDate + " km_driven_when_returned=" + kmDrivenReturned);
+        }
+        connection.close();
+        System.out.println("");
+    }
+
     public void searchByCustomerID(){}
     public void searchByCarID(){}
 
