@@ -33,7 +33,7 @@ public class Controller {
                 case 4: rentalClass.deleteRentalContract(); ui.rentalDeals(); break;
                 case 5: rentalClass.customerDetails(); ui.rentalDeals(); break;
                 case 6: rentalClass.carDetails();ui.rentalDeals();  break;
-                case 7: rentalClass.searchRentalContract(); ui.rentalDeals(); break;
+                case 7: searchRentalContract(); ui.rentalDeals(); break;
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again"); } } }
@@ -49,6 +49,7 @@ public class Controller {
                 case 2: customerClass.addCustomer(); ui.customers();break;
                 case 3: customerClass.updateCustomer(); ui.customers();break;
                 case 4: customerClass.deleteCustomer(); ui.customers();break;
+                case 5: searchCustomer();
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again");
@@ -65,11 +66,54 @@ public class Controller {
                 case 2: carClass.addCar(); ui.cars(); break;
                 case 3: carClass.updateCar(); ui.cars();break;
                 case 4: carClass.deleteCar(); ui.cars(); break;
+                case 5: carClass.searchByCarBrandd(); break;
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again");
             } } }
 
+    public void searchRentalContract()throws SQLException{
+        RentalClass rentalClass = new RentalClass();
+        Scanner scan = new Scanner(System.in);
+        ui.searchRental();
+        while (scan.hasNext()) {
+            int choice = scan.nextInt();
+            switch (choice) {
+                case 1: rentalClass.searchByID(); ui.searchRental(); break;
+                case 2: rentalClass.searchByCustomerID(); ui.searchRental(); break;
+                case 3: rentalClass.searchByCarID(); ui.searchRental(); break;
+                case 9: Controller controller = new Controller(); controller.rentalContracts(); break;
+                default: System.out.println("invalid input");
+            }} }
+
+    public void searchCustomer()throws SQLException{
+        CustomerClass customerClass = new CustomerClass();
+        Scanner scan = new Scanner(System.in);
+        ui.searchCustomer();
+        while (scan.hasNext()) {
+            int choice = scan.nextInt();
+            switch (choice) {
+                case 1: customerClass.searchCustomerById(); ui.searchCustomer();break;
+                case 2: customerClass.searchCustomerByFirstName(); ui.searchCustomer();break;
+                case 3: customerClass.searchCustomerByLastName(); ui.searchCustomer();break;
+                case 4: customerClass.searchCustomerByCity(); ui.searchCustomer();break;
+                case 5: customerClass.searchCustomerByZip(); ui.searchCustomer();break;
+                case 9: customer();
+            }
+        }
+    }
+
+   /* public void searchCars()throws SQLException{
+        CarClass carClass = new CarClass();
+        Scanner scan = new Scanner(System.in);
+        ui.searchCars();
+        scan.hasNext(){
+            int choice = scan.nextInt();
+            switch (choice) {
+                case 1:
+            }
+        }
+    } */
 
     }
 

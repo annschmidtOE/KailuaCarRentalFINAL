@@ -1,5 +1,6 @@
 package com.company;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -143,6 +144,81 @@ public class CarClass {
                 kmDriven + "', DEFAULT)");
         connection.close();
         System.out.println("car added");
+    }
+
+    public void searchByCarType()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter car type\nfamily\nsports\nluxury");
+        /*
+
+         */
 
     }
+    public void searchByCarBrandd()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter brand:");
+        String cBrand = scan.next();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM cars WHERE brand='"+cBrand+"';");
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String brand = resultSet.getString("brand");
+            String carID = resultSet.getString("car_id");
+            String model = resultSet.getString("model");
+            String fuel = resultSet.getString("fuel");
+            String horsepower = resultSet.getString("horse_power");
+            String ccm = resultSet.getString("ccm");
+            String seats = resultSet.getString("seats");
+            String leatherSeats = resultSet.getString("leather_seats");
+            String airCondition = resultSet.getString("air_condition");
+            String cruiseControl = resultSet.getString("cruise_control");
+            String availability = resultSet.getString("car_availability");
+            String registrationNumber = resultSet.getString("registration_number");
+            String kmDriven = resultSet.getString("km_driven");
+            String carPrinter = ("CarID="+carID+" car="+brand+" "+model+" fuel="+fuel+" horsepower="+horsepower+" ccm="+ccm
+                    +"seats="+seats+" leather-seats="+leatherSeats+" air-condition="+airCondition+" cruise-control="+cruiseControl
+                    +" registration-number="+registrationNumber+" km driven="+kmDriven+" availability="+availability);
+            System.out.println(carPrinter);
+            System.out.println(carPrinter);
+        }
+        connection.close();
+        System.out.println("");
+    }
+
+    public void searchByModel()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter model:");
+        String cModel = scan.next();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM cars WHERE model='"+cModel+"';");
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String brand = resultSet.getString("brand");
+            String carID = resultSet.getString("car_id");
+            String model = resultSet.getString("model");
+            String fuel = resultSet.getString("fuel");
+            String horsepower = resultSet.getString("horse_power");
+            String ccm = resultSet.getString("ccm");
+            String seats = resultSet.getString("seats");
+            String leatherSeats = resultSet.getString("leather_seats");
+            String airCondition = resultSet.getString("air_condition");
+            String cruiseControl = resultSet.getString("cruise_control");
+            String availability = resultSet.getString("car_availability");
+            String registrationNumber = resultSet.getString("registration_number");
+            String kmDriven = resultSet.getString("km_driven");
+            String carPrinter = ("CarID="+carID+" car="+brand+" "+model+" fuel="+fuel+" horsepower="+horsepower+" ccm="+ccm
+                    +"seats="+seats+" leather-seats="+leatherSeats+" air-condition="+airCondition+" cruise-control="+cruiseControl
+                    +" registration-number="+registrationNumber+" km driven="+kmDriven+" availability="+availability);
+            System.out.println(carPrinter);
+            System.out.println(carPrinter);
+        }
+        connection.close();
+        System.out.println("");
+    }
+    public void searchByFuel(){}
+    public void searchByRegistrationNumber(){}
+
 }

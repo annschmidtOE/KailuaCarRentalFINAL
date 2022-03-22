@@ -117,9 +117,129 @@ public class CustomerClass {
     }
 
 
-    public void searchCustomer(){
-
+    public void searchCustomerById()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter customer ID:");
+        int cID = scan.nextInt();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM customer WHERE customer_id="+cID);
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String customerID = resultSet.getString("customer_id");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String zipCode = resultSet.getString("zip_code");
+            String city = resultSet.getString("city");
+            String email = resultSet.getString("email");
+            String driverLicenceNumber = resultSet.getString("driver_licence_number");
+            String driverSince = resultSet.getString("driver_since_date");
+            String print=("CustomerID="+customerID+" name="+firstName+" "+lastName+" city="+zipCode+" "+city
+                    +" mail="+email+" driver-licence-number="+driverLicenceNumber+" driver-since="+driverSince);
+            System.out.println(print);
+        }
+        connection.close();
+        System.out.println("");
     }
+
+    public void searchCustomerByFirstName()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter first name:");
+        String firstName1 = scan.next();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM customer WHERE first_name='"+firstName1+"';");
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String customerID = resultSet.getString("customer_id");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String zipCode = resultSet.getString("zip_code");
+            String city = resultSet.getString("city");
+            String email = resultSet.getString("email");
+            String driverLicenceNumber = resultSet.getString("driver_licence_number");
+            String driverSince = resultSet.getString("driver_since_date");
+            String print=("CustomerID="+customerID+" name="+firstName+" "+lastName+" city="+zipCode+" "+city
+                    +" mail="+email+" driver-licence-number="+driverLicenceNumber+" driver-since="+driverSince);
+            System.out.println(print);
+        }
+        connection.close();
+        System.out.println("");
+    }
+    public void searchCustomerByCity()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter city:");
+        String cCity = scan.next();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM customer WHERE city='"+cCity+"';");
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String customerID = resultSet.getString("customer_id");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String zipCode = resultSet.getString("zip_code");
+            String city = resultSet.getString("city");
+            String email = resultSet.getString("email");
+            String driverLicenceNumber = resultSet.getString("driver_licence_number");
+            String driverSince = resultSet.getString("driver_since_date");
+            String print=("CustomerID="+customerID+" name="+firstName+" "+lastName+" city="+zipCode+" "+city
+                    +" mail="+email+" driver-licence-number="+driverLicenceNumber+" driver-since="+driverSince);
+            System.out.println(print);
+        }
+        connection.close();
+        System.out.println("");
+    }
+    public void searchCustomerByZip()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter zip:");
+        int cZip = scan.nextInt();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM customer WHERE zip="+cZip);
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String customerID = resultSet.getString("customer_id");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String zipCode = resultSet.getString("zip_code");
+            String city = resultSet.getString("city");
+            String email = resultSet.getString("email");
+            String driverLicenceNumber = resultSet.getString("driver_licence_number");
+            String driverSince = resultSet.getString("driver_since_date");
+            String print=("CustomerID="+customerID+" name="+firstName+" "+lastName+" city="+zipCode+" "+city
+                    +" mail="+email+" driver-licence-number="+driverLicenceNumber+" driver-since="+driverSince);
+            System.out.println(print);
+        }
+        connection.close();
+        System.out.println("");
+    }
+
+    public void searchCustomerByLastName()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter last name:");
+        String cLastName = scan.next();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM customer WHERE last_name='"+cLastName+"';");
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String customerID = resultSet.getString("customer_id");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String zipCode = resultSet.getString("zip_code");
+            String city = resultSet.getString("city");
+            String email = resultSet.getString("email");
+            String driverLicenceNumber = resultSet.getString("driver_licence_number");
+            String driverSince = resultSet.getString("driver_since_date");
+            String print=("CustomerID="+customerID+" name="+firstName+" "+lastName+" city="+zipCode+" "+city
+                    +" mail="+email+" driver-licence-number="+driverLicenceNumber+" driver-since="+driverSince);
+            System.out.println(print);
+        }
+        connection.close();
+        System.out.println("");
+    }
+
 
 
 }

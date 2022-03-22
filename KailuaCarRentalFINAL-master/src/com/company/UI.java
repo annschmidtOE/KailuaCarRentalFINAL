@@ -37,7 +37,18 @@ public class UI {
     }
 
     public void searchRental(){
-        printString(("Category\n1. Rental Contract ID\n2. Customer ID\n3. Car ID"));
+        printString(("Category\n1. Rental Contract ID\n2. Customer ID\n3. Car ID\n9. back"));
+    }
+
+    public void searchCustomer(){
+        printString("Categoty\n1. customer ID\n2. first name\n3. last name\n4. city\n5. zip code\n9. back");
+        /*
+            case 1: customerClass.searchCustomerById(); break;
+                case 2: customerClass.searchCustomerByFirstName(); break;
+                case 3: customerClass.searchCustomerByLastName(); break;
+                case 4: customerClass.searchCustomerByCity(); break;
+                case 5: customerClass.searchCustomerByZip(); break;
+         */
     }
 
 }

@@ -227,19 +227,6 @@ public class RentalClass {
        return rentalContractID1;
    }
 
-   public void searchRentalContract()throws SQLException{
-        Scanner scan = new Scanner(System.in);
-        ui.searchRental();
-       while (scan.hasNext()) {
-       int choice = scan.nextInt();
-       switch (choice) {
-           case 1: searchByID(); ui.searchRental(); break;
-           case 2: searchByCustomerID(); ui.searchRental(); break;
-           case 3: searchByCarID(); ui.searchRental(); break;
-           case 9: Controller controller = new Controller(); controller.rentalContracts(); break;
-           default: System.out.println("invalid input");
-       }} }
-
     public void searchByID()throws SQLException{
         Scanner scan = new Scanner(System.in);
         Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
@@ -255,6 +242,29 @@ public class RentalClass {
             String fromDate = resultSet.getString("from_date");
             String toDate = resultSet.getString("to_date");
             String kmDrivenReturned = resultSet.getString("km_driven_returned");
+            String printer=("rental_contract_id=" + rentalContractID + " customer_id=" + customerID + " carID=" + carID + " from_date=" + fromDate + " to_date="
+                    + toDate + " km_driven_when_returned=" + kmDrivenReturned);
+            System.out.println(printer);
+        }
+        connection.close();
+        System.out.println("");
+    }
+
+    public void searchByCustomerID()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter customer ID:");
+        int rentalID = scan.nextInt();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM rental_contract WHERE customer_customer_id="+rentalID);
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String rentalContractID = resultSet.getString("rental_contract_id");
+            String customerID = resultSet.getString("customer_customer_id");
+            String carID = resultSet.getString("cars_car_id");
+            String fromDate = resultSet.getString("from_date");
+            String toDate = resultSet.getString("to_date");
+            String kmDrivenReturned = resultSet.getString("km_driven_returned");
             System.out.println("rental_contract_id=" + rentalContractID + " customer_id=" + customerID + " carID=" + carID + " from_date=" + fromDate + " to_date="
                     + toDate + " km_driven_when_returned=" + kmDrivenReturned);
         }
@@ -262,7 +272,26 @@ public class RentalClass {
         System.out.println("");
     }
 
-    public void searchByCustomerID(){}
-    public void searchByCarID(){}
+    public void searchByCarID()throws SQLException{
+        Scanner scan = new Scanner(System.in);
+        Connection connection = DriverManager.getConnection(DATABASE_URL,USER,PASSWORD);
+        System.out.println("Enter carID:");
+        int carID = scan.nextInt();
+        Statement statement = connection.createStatement();
+        String sql = ("SELECT * FROM rental_contract WHERE cars_car_id="+carID);
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            String rentalContractID = resultSet.getString("rental_contract_id");
+            String customerID = resultSet.getString("customer_customer_id");
+            String carID1 = resultSet.getString("cars_car_id");
+            String fromDate = resultSet.getString("from_date");
+            String toDate = resultSet.getString("to_date");
+            String kmDrivenReturned = resultSet.getString("km_driven_returned");
+            System.out.println("rental_contract_id=" + rentalContractID + " customer_id=" + customerID + " carID=" + carID1 + " from_date=" + fromDate + " to_date="
+                    + toDate + " km_driven_when_returned=" + kmDrivenReturned);
+        }
+        connection.close();
+        System.out.println("");
+    }
 
 }
