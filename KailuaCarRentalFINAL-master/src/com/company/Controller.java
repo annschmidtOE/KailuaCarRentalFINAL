@@ -33,7 +33,7 @@ public class Controller {
                 case 4: rentalClass.deleteRentalContract(); ui.rentalDeals(); break;
                 case 5: rentalClass.customerDetails(); ui.rentalDeals(); break;
                 case 6: rentalClass.carDetails();ui.rentalDeals();  break;
-                case 7: searchRentalContract(); ui.rentalDeals(); break;
+                case 7: searchRentalContract();
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again"); } } }
@@ -66,7 +66,7 @@ public class Controller {
                 case 2: carClass.addCar(); ui.cars(); break;
                 case 3: carClass.updateCar(); ui.cars();break;
                 case 4: carClass.deleteCar(); ui.cars(); break;
-                case 5: carClass.searchByCarBrandd(); break;
+                case 5: carClass.searchByCarBrandd();
                 case 9: selectDatabase();
                 default:
                     System.out.println("invalid input\n try again");
@@ -103,17 +103,22 @@ public class Controller {
         }
     }
 
-   /* public void searchCars()throws SQLException{
+    public void searchCars()throws SQLException{
         CarClass carClass = new CarClass();
         Scanner scan = new Scanner(System.in);
-        ui.searchCars();
-        scan.hasNext(){
+        ui.searchCustomer();
+        while (scan.hasNext()) {
             int choice = scan.nextInt();
             switch (choice) {
-                case 1:
+                case 1: carClass.searchByModel();
+                case 2: carClass.searchByCarBrandd();
+                case 3:
+                case 4:
+                case 5:
+                case 9: cars();
             }
         }
-    } */
+    }
 
     }
 
